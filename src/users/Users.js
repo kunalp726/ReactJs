@@ -7,6 +7,9 @@ state={
   users:[
     {name:"Lacazette",goals:2,assist:1},
     {name:"Aubameyang",goals:1,assist:1},
+    {name:"Ozil",goals:1,assist:1},
+    {name:"Lacazette",goals:2,assist:1},
+    {name:"Aubameyang",goals:1,assist:1},
     {name:"Ozil",goals:1,assist:1}
   ],
   title:"Player List"
@@ -25,6 +28,7 @@ makeGoal=(userDy)=>{
     return tempuser;
   });
 this.setCurrentState(newState);
+console.log(newState);
 }
 
 makeAssist=(userDy)=>{
@@ -45,9 +49,8 @@ return(
   <table>
   {
     this.state.users.map((user)=>{
-      return (<div><User goals={user.goals} assist={user.assist}>{user.name}</User>
-          <button onClick={()=>this.makeGoal(user)}>Goal Scored</button>
-          <button onClick={()=>this.makeAssist(user)}>Assist Provided</button></div>
+      return (<User parentMethodAssist={this.makeAssist} parentMethodGoal={this.makeGoal} obj={user} goals={user.goals} assist={user.assist}>{user.name}</User>
+        //  <button onClick={()=>this.makeAssist(user)}>Assist Provided</button>
       )
     })
 

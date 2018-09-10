@@ -5,7 +5,7 @@ import Users from './users/Users';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App container">
       <Users title="Users List"></Users>
       </div>
     )
