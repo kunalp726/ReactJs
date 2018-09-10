@@ -5,7 +5,7 @@ class Users extends Component{
 
 state={
   users:[
-    {name:"Lacazette",goals:1,assist:1},
+    {name:"Lacazette",goals:2,assist:1},
     {name:"Aubameyang",goals:1,assist:1},
     {name:"Ozil",goals:1,assist:1}
   ],
