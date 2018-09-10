@@ -22,6 +22,38 @@
   font-size: large;
 }
 
+.App table tr td {
+  text-align: left;
+  color: black;
+}
+tr:nth-child(odd){
+  background-color: #f2f2f2
+}
+tr:hover{
+  background-color: blue;
+  color: white
+}
+tr:hover td{
+  color: white
+}
+
+table{
+  margin-top: 20px;
+  width: 100%;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+.App td{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 5px;
+  width: 23%;
+}
+.App table tr td:last-child{
+
+  width: 28%;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
