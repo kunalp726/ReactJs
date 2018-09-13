@@ -1,3 +1,6 @@
+body{
+  
+}
 .App {
   text-align: center;
 }
@@ -30,7 +33,7 @@ tr:nth-child(odd){
   background-color: #f2f2f2
 }
 tr:hover{
-  background-color: blue;
+  background-color: #b2bec3;
   color: white
 }
 tr:hover td{
@@ -52,6 +55,12 @@ table{
 .App table tr td:last-child{
 
   width: 28%;
+}
+.App h1{
+  text-transform: uppercase;
+  text-align: left;
+  margin-top: 10px;
+  color: #786fa6;
 }
 
 @keyframes App-logo-spin {
