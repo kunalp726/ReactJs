@@ -8,9 +8,9 @@ state={
     {name:"Lacazette",goals:2,assist:1},
     {name:"Aubameyang",goals:1,assist:1},
     {name:"Ozil",goals:1,assist:1},
-    {name:"Lacazette",goals:2,assist:1},
-    {name:"Aubameyang",goals:1,assist:1},
-    {name:"Ozil",goals:1,assist:1}
+    {name:"Torreira",goals:2,assist:1},
+    {name:"Mkhitaryan",goals:1,assist:1},
+    {name:"Xhaka",goals:1,assist:1}
   ],
   title:"Player List"
 }
