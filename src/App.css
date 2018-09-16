@@ -1,76 +1,97 @@
 body{
   
 }
-.App {
+.main-parent {
   text-align: center;
 }
 
-.App-logo {
+.main-parent-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
 
-.App-header {
+.main-parent-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
 }
 
-.App-title {
+.main-parent-title {
   font-size: 1.5em;
 }
 
-.App-intro {
+.main-parent-intro {
   font-size: large;
 }
 
-.App table tr td {
+.main-parent table tr td {
   text-align: left;
   color: black;
 }
-tr:nth-child(odd){
+/* tr:nth-child(odd){
   background-color: #f2f2f2
+} */
+tr{
+  background-color :#f2f2f2;
 }
 tr:hover{
   background-color: orange;
   color: white
 }
 tr:hover td{
-  color: white
+  color: white;
+  
 }
 
 table{
-  margin-top: 20px;
   width: 100%;
-  box-shadow: 10px 10px 5px #aaaaaa;
+  box-shadow: 0 10px 6px -6px #777;
 }
-.App td{
+.main-parent td{
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 5px;
   width: 15%;
 }
-.App table tr td:last-child{
+.main-parent table tr td:last-child{
 
   width: 28%;
 }
-.App h1{
+.main-parent h1{
   text-transform: uppercase;
   text-align: left;
   margin-top: 10px;
   color: #786fa6;
 }
 h1.heading-parent {
-  background-color: grey;
+  background-color: rgb(20, 19, 19);
   padding: 15px;
   color: white;
-  border-radius: 12px;
-  box-shadow: 10px 10px 5px #aaaaaa;
+  margin-bottom:0px;
+  
+  box-shadow: 0 10px 6px -6px #777;
+}
+.background{
+  background-image: url("./Images/background.jpg");
+  height: 400px;
+  width:100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+.player-parent{
+  margin-top: 50px;
 }
 
+.nav-parent{
+  background-color: #0f4275ab;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+.navbar-light .navbar-brand, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link{
+  color:white;
 }

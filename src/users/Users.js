@@ -3,17 +3,21 @@ import User from './User';
 
 class Users extends Component{
 
-state={
-  users:[
-    {id:0,name:"Lacazette",goals:2,assist:1},
-    {id:1,name:"Aubameyang",goals:1,assist:1},
-    {id:2,name:"Ozil",goals:1,assist:1},
-    {id:3,name:"Torreira",goals:2,assist:1},
-    {id:4,name:"Mkhitaryan",goals:1,assist:1},
-    {id:5,name:"Ramsey",goals:1,assist:1}
-  ],
-  title:"Player List"
-}
+  constructor(){
+    super()
+    this.state={
+      users:[
+        {id:0,name:"Lacazette",goals:2,assist:1},
+        {id:1,name:"Aubameyang",goals:1,assist:1},
+        {id:2,name:"Ozil",goals:1,assist:1},
+        {id:3,name:"Torreira",goals:2,assist:1},
+        {id:4,name:"Mkhitaryan",goals:1,assist:1},
+        {id:5,name:"Ramsey",goals:1,assist:1}
+      ],
+      title:"Player List"
+    }
+  }
+
 
 setCurrentState=(newState)=>{
   this.setState({
@@ -84,7 +88,7 @@ makeAssist=(userDy)=>{
 render(){
 
 return(
-  <div>
+  <div className="container player-parent">
   <h1 className="heading-parent">{this.state.title}</h1>
   <table>
     <tbody>
