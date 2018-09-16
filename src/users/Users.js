@@ -5,12 +5,12 @@ class Users extends Component{
 
 state={
   users:[
-    {name:"Lacazette",goals:2,assist:1},
-    {name:"Aubameyang",goals:1,assist:1},
-    {name:"Ozil",goals:1,assist:1},
-    {name:"Torreira",goals:2,assist:1},
-    {name:"Mkhitaryan",goals:1,assist:1},
-    {name:"Ramsey",goals:1,assist:1}
+    {id:0,name:"Lacazette",goals:2,assist:1},
+    {id:1,name:"Aubameyang",goals:1,assist:1},
+    {id:2,name:"Ozil",goals:1,assist:1},
+    {id:3,name:"Torreira",goals:2,assist:1},
+    {id:4,name:"Mkhitaryan",goals:1,assist:1},
+    {id:5,name:"Ramsey",goals:1,assist:1}
   ],
   title:"Player List"
 }
@@ -24,7 +24,7 @@ setCurrentState=(newState)=>{
 changeGoalsText=(e,userDy)=>{
   const newState=this.state.users.map((user)=>{
     const tempuser=user;
-      if(userDy.name==tempuser.name){
+      if(userDy.name===tempuser.name){
         if(! (isNaN(e.target.value))){
       tempuser.goals=e.target.value;
         }
@@ -36,7 +36,7 @@ changeGoalsText=(e,userDy)=>{
 changeAssistText=(e,userDy)=>{
   const newState=this.state.users.map((user)=>{
     const tempuser=user;
-      if(userDy.name==tempuser.name){
+      if(userDy.name===tempuser.name){
         if(! (isNaN(e.target.value))){
       tempuser.assist=e.target.value;
         }
@@ -70,9 +70,9 @@ this.setCurrentState(newState);
 makeAssist=(userDy)=>{
   const newState=this.state.users.map((user)=>{
     const tempUser=user;
-    if(userDy.name==tempUser.name){
+    if(userDy.name===tempUser.name){
       var val=parseInt(tempUser.assist);
-      if(val==NaN){
+      if(isNaN(val)){
         val=0;
       }
       tempUser.assist=val+1;
@@ -87,14 +87,16 @@ return(
   <div>
   <h1 className="heading-parent">{this.state.title}</h1>
   <table>
+    <tbody>
   {
     this.state.users.map((user,index)=>{
-      return (<User id={index} parentAssistText={this.changeAssistText} parentGoalsText={this.changeGoalsText} parentMethodAssist={this.makeAssist} parentMethodGoal={this.makeGoal} obj={user} goals={user.goals} assist={user.assist}>{user.name}</User>
+      return (<User key={user.id} parentAssistText={this.changeAssistText} parentGoalsText={this.changeGoalsText} parentMethodAssist={this.makeAssist} parentMethodGoal={this.makeGoal.bind(this,user.id)} obj={user} goals={user.goals} assist={user.assist}>{user.name}</User>
         //  <button onClick={()=>this.makeAssist(user)}>Assist Provided</button>
       )
     })
 
   }
+  </tbody>
   </table>
   </div>
 )
