@@ -44,16 +44,26 @@ changeAssistText=(e,userDy)=>{
       return tempuser;
     });
   this.setCurrentState(newState);
-}
+}   
 
-makeGoal=(userDy)=>{
-  const newState=this.state.users.map((user)=>{
-  const tempuser=user;
-    if(userDy.name==tempuser.name){
-    tempuser.goals+=1;
-  }
-    return tempuser;
-  });
+makeGoal=(id)=>{
+  const newState=this.state.users;
+  var val=parseInt(newState[id].goals);
+      if(isNaN(val)){
+        val=0;
+      }
+      newState[id].goals=val+1;
+  // const newState=this.state.users.map((user)=>{
+  // const tempuser=user;
+  //   if(userDy.name==tempuser.name){
+  //     var val=parseInt(tempuser.goals);
+  //     if(val==NaN){
+  //       val=0;
+  //     }
+  //     tempuser.goals=val+1;
+  // }
+  //   return tempuser;
+  // });
 this.setCurrentState(newState);
 }
 
@@ -61,7 +71,11 @@ makeAssist=(userDy)=>{
   const newState=this.state.users.map((user)=>{
     const tempUser=user;
     if(userDy.name==tempUser.name){
-      tempUser.assist+=1;
+      var val=parseInt(tempUser.assist);
+      if(val==NaN){
+        val=0;
+      }
+      tempUser.assist=val+1;
     }
     return tempUser;
   });
@@ -71,11 +85,11 @@ render(){
 
 return(
   <div>
-  <h1>{this.state.title}</h1>
+  <h1 className="heading-parent">{this.state.title}</h1>
   <table>
   {
-    this.state.users.map((user)=>{
-      return (<User parentAssistText={this.changeAssistText} parentGoalsText={this.changeGoalsText} parentMethodAssist={this.makeAssist} parentMethodGoal={this.makeGoal} obj={user} goals={user.goals} assist={user.assist}>{user.name}</User>
+    this.state.users.map((user,index)=>{
+      return (<User id={index} parentAssistText={this.changeAssistText} parentGoalsText={this.changeGoalsText} parentMethodAssist={this.makeAssist} parentMethodGoal={this.makeGoal} obj={user} goals={user.goals} assist={user.assist}>{user.name}</User>
         //  <button onClick={()=>this.makeAssist(user)}>Assist Provided</button>
       )
     })
