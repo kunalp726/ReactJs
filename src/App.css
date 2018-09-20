@@ -95,3 +95,6 @@ h1.heading-parent {
 .navbar-light .navbar-brand, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link{
   color:white;
 }
+.second-parent{
+  background-color: #777; 
+}

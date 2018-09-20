@@ -1,42 +1,70 @@
 import React, { Component,Fragment } from 'react';
 import './App.css';
-import {BrowserRouter as Router,NavLink,Link} from 'react-router-dom';
+import {BrowserRouter as Router,NavLink,Link,Switch} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import Users from './users/Users';
 import About from './About/about';
 import Home from './Home';
-
+import Navbar from "./Navbar";
+import NavbarTwo from "./NavbarTwo";
 class Main extends Component {
+
+  constructor(){
+    super()
+    this.state={
+      users:[
+        {id:0,name:"Lacazette",goals:2,assist:1},
+        {id:1,name:"Aubameyang",goals:1,assist:1},
+        {id:2,name:"Ozil",goals:1,assist:1},
+        {id:3,name:"Torreira",goals:2,assist:1},
+        {id:4,name:"Mkhitaryan",goals:1,assist:1},
+        {id:5,name:"Ramsey",goals:1,assist:1}
+      ],
+      title:"Player List",
+      path:[
+        {url:"/",
+        type:1,
+        component:Home
+        },{
+          url:"/users",
+          type:2,
+          component:Users
+        },{
+          url:"/about",
+          type:2,
+          component:About
+        }
+        ]
+    }
+  }
+  
   render() {
+  const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
+      <Route {...rest} render={props => (
+        <Fragment>
+        <Layout></Layout>
+          <Component {...props}></Component>
+          </Fragment>
+      )} ></Route>
+    )
     return (
       <div className="main-parent">
         <div className="background"></div>
-      
-        <Router>
-          <Fragment>
-        <nav className="navbar navbar-expand-lg navbar-light nav-parent">
-  <Link className="navbar-brand" to="/">AlphaOne</Link>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarNav">
-    <ul className="navbar-nav">
-      <li className="nav-item">
-      <NavLink className="nav-link" to="/">Home</NavLink>
-      </li>
-      <li className="nav-item">
-      <NavLink className="nav-link" to="/users">Users</NavLink>
-      </li>
-      <li className="nav-item">
-      <NavLink className="nav-link" to="/about">About</NavLink>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-        <Route path="/" exact  component={Home}></Route>
-        <Route path="/users" exact strict component={Users}></Route>
-        <Route path="/about" exact strict component={About}></Route>
+        <Router>  
+        <Fragment><AppRoute path="/users" layout={NavbarTwo} component={Users}></AppRoute>
+          {
+            this.state.path.map((obj)=>{
+              if(obj.type===1){
+              return(<AppRoute path={obj.url} exact layout={Navbar}  component={obj.component}></AppRoute>)
+              }else{
+                return(<AppRoute path={obj.url} exact layout={NavbarTwo}  component={obj.component}></AppRoute>) 
+              }
+            })
+          }     
+        {/* <AppRoute path="/users" exact strict component={Users}>
+       
+        </AppRoute>
+        <AppRoute path="/about" exact strict component={About}></AppRoute> */}
         </Fragment>
       </Router>
       </div>
