@@ -1,15 +1,22 @@
 import React,{Component} from 'react';
 import User from './User';
 
-class Users extends Component{
+class Users extends Component{  
 
   constructor(props){
-    super()
+    super(props)
+    // this.state={
+    //   testProperty:"Empty",
+    //   users:[
+    //     {id:0,name:"Giroud",goals:2,assist:1},
+    //     {id:1,name:"Messi",goals:1,assist:1}
+    //   ]
+    // }
   }
 
 
 setCurrentState=(newState)=>{
-  this.setState({
+  this.props.context.setState({
     users:newState
   });
 }
@@ -40,14 +47,15 @@ changeAssistText=(e,userDy)=>{
 }   
 
 makeGoal=(id)=>{
-  const newState=this.props.objstate.users;
-  var val=parseInt(newState[id].goals);
+  const newState=JSON.parse(JSON.stringify(this.props.objstate));
+
+  var val=parseInt(newState.users[id].goals);
       if(isNaN(val)){
         val=0;
       }
-      newState[id].goals=val+1;
+      newState.users[id].goals=val+1;
 
-this.setCurrentState(newState);
+this.setCurrentState(newState.users);
 }
 
 makeAssist=(userDy)=>{

@@ -49,9 +49,9 @@ class Main extends Component {
           {
             this.state.path.map((obj)=>{
               if(obj.type===1){
-              return(<AppRoute path={obj.url} exact layout={Navbar}  component={obj.component} objstate={this.state}></AppRoute>)
+              return(<AppRoute path={obj.url} exact layout={Navbar}  component={obj.component} context={this} objstate={this.state}></AppRoute>)
               }else{
-                return(<AppRoute path={obj.url} exact layout={NavbarTwo} objstate={this.state}  component={obj.component}></AppRoute>) 
+                return(<AppRoute path={obj.url} exact layout={NavbarTwo} objstate={this.state} context={this}  component={obj.component}></AppRoute>) 
               }
             })
           }     
