@@ -55,10 +55,6 @@ class Main extends Component {
               }
             })
           }     
-        {/* <AppRoute path="/users" exact strict component={Users}>
-       
-        </AppRoute>
-        <AppRoute path="/about" exact strict component={About}></AppRoute> */}
         </Fragment>
       </Router>
       </div>

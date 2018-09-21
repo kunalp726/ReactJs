@@ -5,17 +5,6 @@ class Users extends Component{
 
   constructor(props){
     super()
-    // this.state={
-    //   users:[
-    //     {id:0,name:"Lacazette",goals:2,assist:1},
-    //     {id:1,name:"Aubameyang",goals:1,assist:1},
-    //     {id:2,name:"Ozil",goals:1,assist:1},
-    //     {id:3,name:"Torreira",goals:2,assist:1},
-    //     {id:4,name:"Mkhitaryan",goals:1,assist:1},
-    //     {id:5,name:"Ramsey",goals:1,assist:1}
-    //   ],
-    //   title:"Player List"
-    // }
   }
 
 
@@ -57,17 +46,7 @@ makeGoal=(id)=>{
         val=0;
       }
       newState[id].goals=val+1;
-  // const newState=this.state.users.map((user)=>{
-  // const tempuser=user;
-  //   if(userDy.name==tempuser.name){
-  //     var val=parseInt(tempuser.goals);
-  //     if(val==NaN){
-  //       val=0;
-  //     }
-  //     tempuser.goals=val+1;
-  // }
-  //   return tempuser;
-  // });
+
 this.setCurrentState(newState);
 }
 
@@ -95,7 +74,6 @@ return(
   {
     this.props.objstate.users.map((user,index)=>{
       return (<User key={user.id} parentAssistText={this.changeAssistText} parentGoalsText={this.changeGoalsText} parentMethodAssist={this.makeAssist} parentMethodGoal={this.makeGoal.bind(this,user.id)} obj={user} goals={user.goals} assist={user.assist}>{user.name}</User>
-        //  <button onClick={()=>this.makeAssist(user)}>Assist Provided</button>
       )
     })
 
