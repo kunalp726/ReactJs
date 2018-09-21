@@ -7,6 +7,7 @@ import About from './About/about';
 import Home from './Home';
 import Navbar from "./Navbar";
 import NavbarTwo from "./NavbarTwo";
+import AppRoute from  "./AppRoute"
 class Main extends Component {
 
   constructor(){
@@ -39,14 +40,7 @@ class Main extends Component {
   }
   
   render() {
-  const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
-      <Route {...rest} render={props => (
-        <Fragment>
-        <Layout></Layout>
-          <Component {...props}></Component>
-          </Fragment>
-      )} ></Route>
-    )
+  
     return (
       <div className="main-parent">
         <div className="background"></div>
@@ -55,9 +49,9 @@ class Main extends Component {
           {
             this.state.path.map((obj)=>{
               if(obj.type===1){
-              return(<AppRoute path={obj.url} exact layout={Navbar}  component={obj.component}></AppRoute>)
+              return(<AppRoute path={obj.url} exact layout={Navbar}  component={obj.component} objstate={this.state}></AppRoute>)
               }else{
-                return(<AppRoute path={obj.url} exact layout={NavbarTwo}  component={obj.component}></AppRoute>) 
+                return(<AppRoute path={obj.url} exact layout={NavbarTwo} objstate={this.state}  component={obj.component}></AppRoute>) 
               }
             })
           }     
