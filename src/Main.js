@@ -51,7 +51,7 @@ class Main extends Component {
       <div className="main-parent">
         <div className="background"></div>
         <Router>  
-        <Fragment><AppRoute path="/users" layout={NavbarTwo} component={Users}></AppRoute>
+        <Fragment>
           {
             this.state.path.map((obj)=>{
               if(obj.type===1){
