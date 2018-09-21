@@ -3,19 +3,19 @@ import User from './User';
 
 class Users extends Component{
 
-  constructor(){
+  constructor(props){
     super()
-    this.state={
-      users:[
-        {id:0,name:"Lacazette",goals:2,assist:1},
-        {id:1,name:"Aubameyang",goals:1,assist:1},
-        {id:2,name:"Ozil",goals:1,assist:1},
-        {id:3,name:"Torreira",goals:2,assist:1},
-        {id:4,name:"Mkhitaryan",goals:1,assist:1},
-        {id:5,name:"Ramsey",goals:1,assist:1}
-      ],
-      title:"Player List"
-    }
+    // this.state={
+    //   users:[
+    //     {id:0,name:"Lacazette",goals:2,assist:1},
+    //     {id:1,name:"Aubameyang",goals:1,assist:1},
+    //     {id:2,name:"Ozil",goals:1,assist:1},
+    //     {id:3,name:"Torreira",goals:2,assist:1},
+    //     {id:4,name:"Mkhitaryan",goals:1,assist:1},
+    //     {id:5,name:"Ramsey",goals:1,assist:1}
+    //   ],
+    //   title:"Player List"
+    // }
   }
 
 
@@ -26,7 +26,7 @@ setCurrentState=(newState)=>{
 }
 
 changeGoalsText=(e,userDy)=>{
-  const newState=this.state.users.map((user)=>{
+  const newState=this.props.objstate.users.map((user)=>{
     const tempuser=user;
       if(userDy.name===tempuser.name){
         if(! (isNaN(e.target.value))){
@@ -38,7 +38,7 @@ changeGoalsText=(e,userDy)=>{
   this.setCurrentState(newState);
 }
 changeAssistText=(e,userDy)=>{
-  const newState=this.state.users.map((user)=>{
+  const newState=this.props.objstate.users.map((user)=>{
     const tempuser=user;
       if(userDy.name===tempuser.name){
         if(! (isNaN(e.target.value))){
@@ -51,7 +51,7 @@ changeAssistText=(e,userDy)=>{
 }   
 
 makeGoal=(id)=>{
-  const newState=this.state.users;
+  const newState=this.props.objstate.users;
   var val=parseInt(newState[id].goals);
       if(isNaN(val)){
         val=0;
@@ -72,7 +72,7 @@ this.setCurrentState(newState);
 }
 
 makeAssist=(userDy)=>{
-  const newState=this.state.users.map((user)=>{
+  const newState=this.props.objstate.users.map((user)=>{
     const tempUser=user;
     if(userDy.name===tempUser.name){
       var val=parseInt(tempUser.assist);
@@ -89,11 +89,11 @@ render(){
 
 return(
   <div className="container player-parent">
-  <h1 className="heading-parent">{this.state.title}</h1>
+  <h1 className="heading-parent">{this.props.objstate.title}</h1>
   <table>
     <tbody>
   {
-    this.state.users.map((user,index)=>{
+    this.props.objstate.users.map((user,index)=>{
       return (<User key={user.id} parentAssistText={this.changeAssistText} parentGoalsText={this.changeGoalsText} parentMethodAssist={this.makeAssist} parentMethodGoal={this.makeGoal.bind(this,user.id)} obj={user} goals={user.goals} assist={user.assist}>{user.name}</User>
         //  <button onClick={()=>this.makeAssist(user)}>Assist Provided</button>
       )
